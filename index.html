@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pretty Please Collective | Boutiques, Hat Bar &amp; Candle Bar in CA &amp; AZ</title>
+<meta name="description" content="Pretty Please Collective is a group of boutiques across California and Arizona, home to Pretty Please, Daisy Blue, MJ's, RAE, the Hat Bar, and the Candle Bar. Happy Girls Are The Prettiest.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Palette */
+    --bg: #fdf6f3;
+    --bg-alt: #f7e9e6;
+    --surface: #ffffff;
+    --ink: #2c2127;
+    --ink-soft: #5c4a52;
+    --muted: #8a757e;
+    --line: #ecd9d4;
+    --accent: #c76a85;
+    --accent-deep: #9f4c66;
+    --accent-soft: #f3d9e0;
+    --gold: #c9a26a;
+    /* Type */
+    --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --font-ui: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /* Shape */
+    --radius: 18px;
+    --radius-sm: 12px;
+    --shadow: 0 18px 50px -24px rgba(120, 60, 80, 0.45);
+    --shadow-soft: 0 10px 30px -18px rgba(120, 60, 80, 0.35);
+    --maxw: 1180px;
+    --gutter: clamp(16px, 5vw, 56px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-ui);
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; line-height: 1.08; letter-spacing: 0.01em; }
+
+  a { color: inherit; text-decoration: none; }
+
+  img, svg { display: block; max-width: 100%; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
+
+  .eyebrow {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent-deep);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 0.86rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.95em 1.7em;
+    border-radius: 999px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow-soft); }
+  .btn-primary:hover { background: var(--accent-deep); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--accent-deep); border-color: var(--accent); }
+  .btn-ghost:hover { background: var(--accent-soft); transform: translateY(-2px); }
+  .btn-light { background: #fff; color: var(--accent-deep); }
+  .btn-light:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+
+  /* ---------- NAV ---------- */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(253, 246, 243, 0.86);
+    backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 74px;
+  }
+  .brand { display: flex; align-items: center; gap: 0.7rem; }
+  .brand-mark {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: radial-gradient(circle at 32% 30%, var(--accent-soft), var(--accent) 78%);
+    display: grid; place-items: center;
+    color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 1.2rem;
+    box-shadow: inset 0 -3px 8px rgba(159,76,102,0.4);
+  }
+  .brand-name { font-family: var(--font-display); font-weight: 600; font-size: 1.22rem; line-height: 1; }
+  .brand-name span { display: block; font-family: var(--font-ui); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+  .nav-links { display: flex; align-items: center; gap: 1.6rem; list-style: none; }
+  .nav-links a { font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; color: var(--ink-soft); transition: color .18s ease; }
+  .nav-links a:hover { color: var(--accent-deep); }
+  .nav-cta { display: flex; align-items: center; gap: 0.8rem; }
+  .nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin: 5px 0; transition: .25s; border-radius: 2px; }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; padding: clamp(60px, 9vw, 120px) 0 clamp(70px, 9vw, 120px); overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(640px 420px at 82% 12%, var(--accent-soft) 0%, transparent 62%),
+      radial-gradient(520px 380px at 8% 88%, #fbeadf 0%, transparent 60%);
+  }
+  .hero-blob { position: absolute; z-index: 0; border-radius: 50%; filter: blur(2px); opacity: .5; }
+  .hero-blob.b1 { width: 230px; height: 230px; right: -60px; top: 40px; background: radial-gradient(circle at 40% 35%, #fff, var(--accent-soft)); }
+  .hero-blob.b2 { width: 150px; height: 150px; left: -40px; bottom: 60px; background: radial-gradient(circle at 40% 35%, #fff, #fbe3cf); opacity:.6; }
+  .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+  .hero h1 { font-size: clamp(2.8rem, 7vw, 5rem); margin: 0.5rem 0 0; }
+  .hero h1 em { font-style: italic; color: var(--accent-deep); }
+  .hero p.lead { font-size: clamp(1.02rem, 1.6vw, 1.18rem); color: var(--ink-soft); max-width: 46ch; margin: 1.3rem 0 2rem; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+
+  /* Hero visual card collage */
+  .hero-art { position: relative; min-height: 360px; }
+  .art-card {
+    position: absolute; border-radius: var(--radius); box-shadow: var(--shadow);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;
+    color: #fff; overflow: hidden;
+  }
+  .art-card .tag { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: .16em; font-size: .66rem; opacity: .9; }
+  .art-card .ttl { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+  .art-1 { width: 58%; height: 300px; left: 0; top: 10px; background: linear-gradient(150deg, #d98aa0, #9f4c66); }
+  .art-2 { width: 46%; height: 190px; right: 0; top: 0; background: linear-gradient(150deg, #e9c7a0, #c9a26a); }
+  .art-3 { width: 50%; height: 150px; right: 6%; bottom: 0; background: linear-gradient(150deg, #cdb4d6, #8a6fa0); }
+  .art-card::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.28), transparent 55%);
+  }
+  .art-card .tag, .art-card .ttl { position: relative; z-index: 1; }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee { background: var(--accent-deep); color: #fff; overflow: hidden; padding: 14px 0; }
+  .marquee-track { display: flex; gap: 2.4rem; white-space: nowrap; width: max-content; animation: scroll 26s linear infinite; }
+  .marquee-track span { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; opacity: .95; display:flex; align-items:center; gap:2.4rem; }
+  .marquee-track span::after { content: "\2767"; color: var(--gold); font-style: normal; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: clamp(56px, 8vw, 104px) 0; }
+  .sec-head { max-width: 640px; margin: 0 auto clamp(32px, 5vw, 56px); text-align: center; }
+  .sec-head h2 { font-size: clamp(2.1rem, 4.4vw, 3.2rem); margin: 0.5rem 0 0.6rem; }
+  .sec-head p { color: var(--ink-soft); font-size: 1.04rem; }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: clamp(30px,4vw,44px) 0; }
+  .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.5vw, 34px); }
+  .trust-item { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .trust-ico { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; background: var(--accent-soft); color: var(--accent-deep); }
+  .trust-item strong { font-family: var(--font-ui); font-weight: 600; font-size: 0.98rem; }
+  .trust-item span { font-size: 0.86rem; color: var(--muted); max-width: 22ch; }
+
+  /* ---------- BOUTIQUES ---------- */
+  .boutiques { background: var(--bg); }
+  .brand-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(18px, 2.6vw, 28px); }
+  .brand-card {
+    position: relative; border-radius: var(--radius); overflow: hidden; background: var(--surface);
+    box-shadow: var(--shadow-soft); border: 1px solid var(--line);
+    display: flex; flex-direction: column; min-height: 260px;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .brand-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .brand-swatch { height: 120px; position: relative; }
+  .sw-pp { background: linear-gradient(135deg, #e79bb0, #c76a85); }
+  .sw-db { background: linear-gradient(135deg, #a9c6d6, #6f9fb8); }
+  .sw-mj { background: linear-gradient(135deg, #d9c3a3, #b99a6c); }
+  .sw-rae { background: linear-gradient(135deg, #cdb0a0, #9b6f58); }
+  .brand-swatch .chip { position: absolute; top: 14px; left: 16px; background: rgba(255,255,255,.9); color: var(--ink); border-radius: 999px; padding: 4px 12px; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+  .brand-body { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+  .brand-body h3 { font-size: 1.7rem; }
+  .brand-body p { color: var(--ink-soft); font-size: 0.94rem; margin: 8px 0 18px; flex: 1; }
+  .brand-link { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; color: var(--accent-deep); display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; }
+  .brand-link:hover { gap: 11px; }
+
+  /* ---------- EXPERIENCES ---------- */
+  .experiences { background: var(--bg-alt); }
+  .exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.5vw, 26px); }
+  .exp-card { background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; }
+  .exp-top { height: 150px; position: relative; display: grid; place-items: center; color: #fff; }
+  .exp-hat { background: linear-gradient(145deg, #c76a85, #9f4c66); }
+  .exp-candle { background: linear-gradient(145deg, #d8a35c, #b07a2e); }
+  .exp-night { background: linear-gradient(145deg, #8a6fa0, #5f4a78); }
+  .exp-top svg { width: 54px; height: 54px; opacity: .95; }
+  .exp-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+  .exp-body h3 { font-size: 1.5rem; margin-bottom: 8px; }
+  .exp-body p { color: var(--ink-soft); font-size: 0.92rem; flex: 1; margin-bottom: 18px; }
+
+  /* ---------- GIFT ---------- */
+  .gift-inner { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(30px, 5vw, 64px); align-items: center; }
+  .gift-card-visual {
+    aspect-ratio: 1.6 / 1; border-radius: var(--radius); box-shadow: var(--shadow);
+    background: linear-gradient(135deg, #c76a85 0%, #9f4c66 60%, #7d3a52 100%);
+    color: #fff; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .gift-card-visual::after { content:""; position:absolute; width: 200px; height: 200px; border-radius:50%; background: rgba(255,255,255,.12); right:-60px; top:-60px; }
+  .gift-card-visual .gc-top { display:flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
+  .gift-card-visual .gc-brand { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+  .gift-card-visual .gc-amt { font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; position: relative; z-index:1; }
+  .gift-card-visual .gc-note { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; opacity: .85; position: relative; z-index:1; }
+  .gift-copy h2 { font-size: clamp(2rem, 4vw, 2.9rem); margin-bottom: 1rem; }
+  .gift-copy p { color: var(--ink-soft); margin-bottom: 1.5rem; }
+  .gift-values { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.8rem; }
+  .gift-values span { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: .82rem; color: var(--ink-soft); background: var(--surface); }
+
+  /* ---------- FIND US ---------- */
+  .find { background: var(--surface); }
+  .find-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: stretch; }
+  .flagship {
+    border-radius: var(--radius); border: 1px solid var(--line); padding: clamp(26px, 3vw, 38px);
+    background: var(--bg); box-shadow: var(--shadow-soft);
+  }
+  .flagship .eyebrow { display:block; margin-bottom: 10px; }
+  .flagship h3 { font-size: 1.9rem; margin-bottom: 6px; }
+  .flagship .addr { color: var(--ink-soft); font-size: 1.02rem; margin-bottom: 20px; }
+  .flagship ul { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+  .flagship li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.96rem; color: var(--ink); }
+  .flagship li svg { flex: 0 0 auto; width: 20px; height: 20px; color: var(--accent-deep); margin-top: 3px; }
+  .map-visual {
+    border-radius: var(--radius); overflow: hidden; min-height: 340px; position: relative;
+    background:
+      linear-gradient(0deg, rgba(0,0,0,.03), rgba(0,0,0,.03)),
+      repeating-linear-gradient(0deg, #eef3ee 0 1px, transparent 1px 46px),
+      repeating-linear-gradient(90deg, #eef3ee 0 1px, transparent 1px 46px),
+      #f4f7f3;
+    border: 1px solid var(--line); display: grid; place-items: center;
+  }
+  .map-visual .road { position: absolute; background: #e3e9e2; }
+  .map-visual .r1 { height: 16px; width: 120%; top: 38%; left: -10%; transform: rotate(-8deg); }
+  .map-visual .r2 { width: 16px; height: 120%; left: 58%; top: -10%; transform: rotate(6deg); }
+  .map-pin { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+  .map-pin .dot { width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--accent); box-shadow: 0 8px 18px -6px rgba(159,76,102,.7); }
+  .map-pin .dot::after { content:""; position:absolute; width: 9px; height: 9px; background:#fff; border-radius:50%; top:8px; left:8px; }
+  .map-pin .lbl { background: #fff; border-radius: 999px; padding: 7px 16px; font-size: .82rem; font-weight: 600; box-shadow: var(--shadow-soft); color: var(--ink); }
+  .state-tags { display:flex; gap: 10px; margin-top: 18px; }
+  .state-tags span { background: var(--accent-soft); color: var(--accent-deep); border-radius: 999px; padding: 6px 16px; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+
+  /* ---------- NEWSLETTER ---------- */
+  .news { background: var(--accent-deep); color: #fff; text-align: center; }
+  .news h2 { font-size: clamp(2rem, 4.2vw, 3rem); }
+  .news p { opacity: .92; max-width: 48ch; margin: 1rem auto 2rem; }
+  .news-form { display: flex; gap: 10px; max-width: 480px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+  .news-form input {
+    flex: 1 1 240px; border: 0; border-radius: 999px; padding: 1em 1.4em;
+    font-family: var(--font-ui); font-size: 0.95rem; background: #fff; color: var(--ink);
+  }
+  .news-form input:focus { outline: 3px solid var(--accent-soft); outline-offset: 2px; }
+  .news-note { font-size: .74rem; opacity: .75; margin-top: 14px; letter-spacing: .02em; }
+  .news-ok { margin-top: 16px; font-family: var(--font-display); font-style: italic; font-size: 1.4rem; min-height: 1.4rem; color: #ffe3ec; }
+
+  /* ---------- COMMUNITY ---------- */
+  .community { background: var(--bg); }
+  .community-inner { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(32px, 5vw, 60px); text-align: center; box-shadow: var(--shadow-soft); }
+  .community-inner h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); margin-bottom: 1rem; }
+  .community-inner p { color: var(--ink-soft); max-width: 60ch; margin: 0 auto 2rem; }
+
+  /* ---------- FOOTER ---------- */
+  footer { background: var(--ink); color: #e9dde2; padding: clamp(50px, 7vw, 80px) 0 32px; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: clamp(28px, 4vw, 52px); margin-bottom: 44px; }
+  footer .brand-name { color: #fff; }
+  footer .brand-name span { color: #b79aa4; }
+  .foot-about { color: #c3b1b9; font-size: 0.92rem; margin-top: 16px; max-width: 34ch; }
+  .foot-col h4 { font-family: var(--font-ui); font-size: .76rem; letter-spacing: .2em; text-transform: uppercase; color: #b79aa4; margin-bottom: 16px; font-weight: 600; }
+  .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .foot-col a, .foot-col li { color: #e0d2d8; font-size: 0.9rem; }
+  .foot-col a:hover { color: #fff; }
+  .foot-bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; }
+  .foot-bottom p { font-size: 0.82rem; color: #b79aa4; }
+  .foot-tag { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: #f0d9e1; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-art { min-height: 300px; margin-top: 10px; order: -1; }
+    .gift-inner { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 26px; }
+    .find-grid { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (max-width: 760px) {
+    .nav-links, .nav-cta .btn { display: none; }
+    .nav-toggle { display: block; }
+    .nav-links.open {
+      display: flex; position: absolute; top: 74px; left: 0; right: 0;
+      flex-direction: column; align-items: flex-start; gap: 0; background: var(--bg);
+      border-bottom: 1px solid var(--line); padding: 8px var(--gutter) 20px;
+    }
+    .nav-links.open li { width: 100%; }
+    .nav-links.open a { display: block; padding: 12px 0; width: 100%; border-bottom: 1px solid var(--line); }
+    .brand-grid { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 460px) {
+    .trust-grid { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Pretty Please Collective home">
+      <span class="brand-mark">P</span>
+      <span class="brand-name">Pretty Please<span>Collective</span></span>
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#boutiques">Boutiques</a></li>
+        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#gift">Gift Cards</a></li>
+        <li><a href="#find">Find Us</a></li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#find" class="btn btn-primary">Plan Your Visit</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <span class="hero-blob b1"></span>
+  <span class="hero-blob b2"></span>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">Boutiques across California &amp; Arizona</span>
+      <h1>Happy Girls Are <em>The Prettiest</em></h1>
+      <p class="lead">Pretty Please Collective brings four fashion boutiques together with hands on Hat Bar and Candle Bar experiences, all in one playful, welcoming home for getting ready and making memories.</p>
+      <div class="hero-actions">
+        <a href="#boutiques" class="btn btn-primary">Shop Our Stores</a>
+        <a href="#experiences" class="btn btn-ghost">Book an Experience</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="art-card art-1"><span class="tag">Fashion Boutiques</span><span class="ttl">Pretty Please</span></div>
+      <div class="art-card art-2"><span class="tag">Make Your Own</span><span class="ttl">Hat Bar</span></div>
+      <div class="art-card art-3"><span class="tag">Pour &amp; Create</span><span class="ttl">Candle Bar</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Pretty Please</span><span>Daisy Blue</span><span>MJ's</span><span>RAE</span><span>Hat Bar</span><span>Candle Bar</span>
+    <span>Pretty Please</span><span>Daisy Blue</span><span>MJ's</span><span>RAE</span><span>Hat Bar</span><span>Candle Bar</span>
+  </div>
+</div>
+
+<!-- ===== TRUST STRIP ===== -->
+<div class="trust">
+  <div class="wrap trust-grid">
+    <div class="trust-item">
+      <span class="trust-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 7l2-3h14l2 3M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7M9 11a3 3 0 0 0 6 0"/></svg></span>
+      <strong>Four Boutiques, One Collective</strong>
+      <span>Pretty Please, Daisy Blue, MJ's, and RAE under one roof</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-5a8 8 0 0 1 16 0v5M4 16h16"/><circle cx="12" cy="7" r="3"/></svg></span>
+      <strong>Hands On Hat &amp; Candle Bars</strong>
+      <span>Design a custom hat or pour your own candle with friends</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a6 6 0 0 0 12 0V3M4 21h16M9 21v-3a3 3 0 0 1 6 0v3"/></svg></span>
+      <strong>Private Styling Parties</strong>
+      <span>Ladies Night with champagne and a personal stylist</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M12 7v13M3 11h18M8 7a2 2 0 1 1 4 0 2 2 0 1 1 4 0"/></svg></span>
+      <strong>Gift Cards for Any Occasion</strong>
+      <span>Pretty Please Money from $25 to $500</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BOUTIQUES ===== -->
+<section class="boutiques" id="boutiques">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Shop Our Stores</span>
+      <h2>Meet the Boutiques</h2>
+      <p>Each label has its own personality, from coastal casual to western edge. Find your favorite, or shop them all across California and Arizona.</p>
+    </div>
+    <div class="brand-grid">
+      <article class="brand-card">
+        <div class="brand-swatch sw-pp"><span class="chip">Fashion Forward</span></div>
+        <div class="brand-body">
+          <h3>Pretty Please</h3>
+          <p>Cute, trendy, and always evolving. Fashion forward styles, fun accessories, and statement pieces designed to make you feel confident and inspired every time you walk in.</p>
+          <a class="brand-link" href="#find">Shop Pretty Please <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="brand-card">
+        <div class="brand-swatch sw-db"><span class="chip">Coastal Comfort</span></div>
+        <div class="brand-body">
+          <h3>Daisy Blue</h3>
+          <p>Effortless coastal style made for everyday comfort. Soft fabrics, timeless basics, and relaxed pieces that blend comfort with elevated casual fashion.</p>
+          <a class="brand-link" href="#find">Shop Daisy Blue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="brand-card">
+        <div class="brand-swatch sw-mj"><span class="chip">Trendy &amp; Timeless</span></div>
+        <div class="brand-body">
+          <h3>MJ's</h3>
+          <p>A balance of trendy and timeless. MJ's brings together modern styles and everyday essentials, making it easy to create looks that feel current, comfortable, and versatile.</p>
+          <a class="brand-link" href="#find">Shop MJ's <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="brand-card">
+        <div class="brand-swatch sw-rae"><span class="chip">Western Edge</span></div>
+        <div class="brand-body">
+          <h3>RAE</h3>
+          <p>Western inspired style with a modern edge. RAE combines trendy pieces with timeless staples, creating a unique mix of fashion that feels both bold and effortlessly wearable.</p>
+          <a class="brand-link" href="#find">Shop RAE <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCES ===== -->
+<section class="experiences" id="experiences">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Plan Your Visit</span>
+      <h2>Make Something Together</h2>
+      <p>More than shopping. Book a hands on experience with your friends and leave with something you created yourself.</p>
+    </div>
+    <div class="exp-grid">
+      <article class="exp-card">
+        <div class="exp-top exp-hat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17c0-1 1-2 3-2 0 0 1-9 5-9s5 9 5 9c2 0 3 1 3 2M2 18h20"/></svg>
+        </div>
+        <div class="exp-body">
+          <h3>Hat Bar Experience</h3>
+          <p>Design your own custom hat from start to finish. Choose your style, size, and color, then personalize it with patches and details for a one of a kind piece.</p>
+          <a class="btn btn-ghost" href="https://www.hatbarbyprettyplease.com" target="_blank" rel="noopener">Create Your Hat</a>
+        </div>
+      </article>
+      <article class="exp-card">
+        <div class="exp-top exp-candle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1.5 1.5 2 2.5 2 3.5A2 2 0 0 1 10 6.5c0-1 .5-2 2-3.5zM8 10h8v9H8zM8 10c0-1 1-2 4-2s4 1 4 2"/></svg>
+        </div>
+        <div class="exp-body">
+          <h3>Candle Bar Experience</h3>
+          <p>A hands on experience where creativity meets scent. Pour your own custom candle from a wide variety of fragrances and jar styles. Perfect for girls' nights and celebrations.</p>
+          <a class="btn btn-ghost" href="https://carlsbadcandlebar.com" target="_blank" rel="noopener">Create Your Candle</a>
+        </div>
+      </article>
+      <article class="exp-card">
+        <div class="exp-top exp-night">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10l-1 6a4 4 0 0 1-8 0zM12 15v4M8 21h8"/></svg>
+        </div>
+        <div class="exp-body">
+          <h3>Ladies Night</h3>
+          <p>Private shopping parties with your friends, champagne, and a personal styling experience. The perfect way to celebrate a birthday, a bachelorette, or just a great night out.</p>
+          <a class="btn btn-ghost" href="#find">Plan a Night</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GIFT CARDS ===== -->
+<section class="gift" id="gift">
+  <div class="wrap gift-inner">
+    <div class="gift-card-visual" aria-hidden="true">
+      <div class="gc-top">
+        <span class="gc-brand">Pretty Please</span>
+        <span class="gc-note">Gift Card</span>
+      </div>
+      <div>
+        <div class="gc-amt">$100</div>
+        <span class="gc-note">Pretty Please Money</span>
+      </div>
+    </div>
+    <div class="gift-copy">
+      <span class="eyebrow">Pretty Please Money</span>
+      <h2>Give the Gift of Pretty Please Collective</h2>
+      <p>A Pretty Please Collective gift card lets them choose exactly what they love. Perfect for birthdays, holidays, girls' nights, or just because. Gift cards can be used at any of our boutiques, Candle Bars, or Hat Bar experiences across California and Arizona.</p>
+      <div class="gift-values">
+        <span>$25</span><span>$50</span><span>$75</span><span>$100</span><span>$150</span><span>$200</span><span>$250</span><span>$500</span>
+      </div>
+      <a href="#find" class="btn btn-primary">Buy a Gift Card</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FIND US (store locator fix) ===== -->
+<section class="find" id="find">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">We Might Be Closer Than You Think</span>
+      <h2>Find Us</h2>
+      <p>Visit our flagship in Carlsbad, or reach out and we will point you to the Pretty Please Collective boutique nearest you.</p>
+    </div>
+    <div class="find-grid">
+      <div class="flagship">
+        <span class="eyebrow">Flagship Boutique</span>
+        <h3>Carlsbad, California</h3>
+        <p class="addr">Home of Pretty Please, the Hat Bar, and the Candle Bar.</p>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <span>2105 Camino Vida Roble, Ste G.<br>Carlsbad, CA 92011</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            <span><a href="tel:17606029990">760-602-9990</a></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Call ahead for current store hours and private event availability.</span>
+          </li>
+        </ul>
+        <div class="state-tags"><span>California</span><span>Arizona</span></div>
+      </div>
+      <div class="map-visual" role="img" aria-label="Map showing the Carlsbad, California flagship location">
+        <span class="road r1"></span>
+        <span class="road r2"></span>
+        <div class="map-pin">
+          <span class="dot"></span>
+          <span class="lbl">Carlsbad, CA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER (storage fix) ===== -->
+<section class="news">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#f3d9e0">Stay in the Loop</span>
+    <h2>Subscribe</h2>
+    <p>Sign up with your email address to receive news, new arrivals, and first invites to our Hat Bar, Candle Bar, and Ladies Night events.</p>
+    <form class="news-form" id="newsForm" novalidate>
+      <input type="email" id="newsEmail" name="email" placeholder="Email Address" aria-label="Email Address" required>
+      <button type="submit" class="btn btn-light">Join</button>
+    </form>
+    <div class="news-ok" id="newsOk" role="status" aria-live="polite"></div>
+    <p class="news-note">By completing this form you are signing up to receive our emails and can unsubscribe at any time.</p>
+  </div>
+</section>
+
+<!-- ===== COMMUNITY ===== -->
+<section class="community" id="community">
+  <div class="wrap">
+    <div class="community-inner">
+      <span class="eyebrow">Let's Work Together</span>
+      <h2>We Love Working With Our Community</h2>
+      <p>Interested in collaborating with Pretty Please Collective? We love partnering with local businesses, hosting fundraisers, and creating unique in store experiences. If you have an idea or would like to work together, we would love to hear from you.</p>
+      <a href="#find" class="btn btn-primary">Submit an Inquiry</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <span class="brand-mark">P</span>
+          <span class="brand-name">Pretty Please<span>Collective</span></span>
+        </div>
+        <p class="foot-about">Our goal at Pretty Please Collective is not only to provide the best and most unique product, but to also make lasting connections with our patrons.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#boutiques">Pretty Please</a></li>
+          <li><a href="#boutiques">Daisy Blue</a></li>
+          <li><a href="#boutiques">MJ's</a></li>
+          <li><a href="#boutiques">RAE</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Experiences</h4>
+        <ul>
+          <li><a href="#experiences">Hat Bar</a></li>
+          <li><a href="#experiences">Candle Bar</a></li>
+          <li><a href="#experiences">Ladies Night</a></li>
+          <li><a href="#gift">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>2105 Camino Vida Roble, Ste G.</li>
+          <li>Carlsbad, CA 92011</li>
+          <li><a href="tel:17606029990">760-602-9990</a></li>
+          <li><a href="#find">Find Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>Copyright &copy; 2026 Pretty Please Collective. All rights reserved.</p>
+      <span class="foot-tag">Happy Girls Are The Prettiest</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle (vanilla, no framework)
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    if (toggle && links) {
+      toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          links.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  })();
+
+  // Newsletter: give the form a real, responsive confirmation
+  (function () {
+    var form = document.getElementById('newsForm');
+    var email = document.getElementById('newsEmail');
+    var ok = document.getElementById('newsOk');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var val = (email.value || '').trim();
+      var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      if (!valid) {
+        ok.textContent = 'Please enter a valid email address.';
+        email.focus();
+        return;
+      }
+      ok.textContent = 'Thank you! You are on the list.';
+      form.reset();
+    });
+  })();
+</script>
+</body>
+</html>
